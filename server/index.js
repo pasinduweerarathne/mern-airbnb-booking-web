@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
-    origin: ["https://deploy-mern-"],
+    origin: ["https://vercel.com/pasinduweerarathne/mern-airbnb-booking-web"],
     credentials: true,
   })
 );
