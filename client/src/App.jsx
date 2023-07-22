@@ -13,7 +13,7 @@ import Place from "./pages/Place";
 import Bookings from "./pages/Bookings";
 import Booking from "./pages/Booking";
 
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://vercel.com/pasinduweerarathne/mern-airbnb-booking-web";
 axios.defaults.withCredentials = true;
 
 function App() {
