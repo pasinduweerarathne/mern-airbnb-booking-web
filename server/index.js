@@ -8,6 +8,7 @@ import path from "path";
 
 import userRouter from "./routes/users.js";
 import placeRouter from "./routes/places.js";
+import bookingRouter from "./routes/bookings.js";
 import fileuploadRouter from "./routes/fileupload.js";
 
 const app = express();
@@ -29,6 +30,7 @@ app.use(
 app.use("/user", userRouter);
 app.use("/file", fileuploadRouter);
 app.use("/place", placeRouter);
+app.use("/booking", bookingRouter);
 
 const MONGODB_URI = process.env.MONGODB_URI;
 const PORT = 5000;

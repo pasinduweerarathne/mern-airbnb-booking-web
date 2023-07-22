@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
+import AccountNav from "./AccountNav";
 
 const Layout = () => {
   return (
