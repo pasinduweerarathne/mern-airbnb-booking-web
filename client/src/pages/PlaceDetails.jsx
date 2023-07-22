@@ -6,7 +6,6 @@ import AccountNav from "../components/AccountNav";
 const PlaceDetails = () => {
   const { id } = useParams();
   const [placeInfo, setPlaceInfo] = useState({});
-  console.log(placeInfo?.photos);
 
   useEffect(() => {
     axios.get(`/place/getplace/${id}`).then((res) => setPlaceInfo(res.data));

@@ -32,17 +32,4 @@ app.use("/file", fileuploadRouter);
 app.use("/place", placeRouter);
 app.use("/booking", bookingRouter);
 
-const MONGODB_URI = process.env.MONGODB_URI;
-const PORT = 5000;
-
-mongoose.set("strictQuery", false);
-mongoose
-  .connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`Server Running on Port: http://localhost:${PORT}`)
-    )
-  );
+app.listen(5000);

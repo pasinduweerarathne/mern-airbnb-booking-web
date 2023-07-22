@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 import { BookingModel } from "../models/bookings.js";
 
 const jwtSecret = "fasefraw4r5r3wq45wdfgw34twdfg";
@@ -18,6 +19,7 @@ export const bookingPlace = async (req, res) => {
   const { id } = await getUserDataFromReq(req);
 
   try {
+    mongoose.connect(process.env.MONGODB_URI);
     const booking = await BookingModel.create({ ...bookingData, user: id });
     res.json(booking);
   } catch (error) {
@@ -26,6 +28,7 @@ export const bookingPlace = async (req, res) => {
 };
 
 export const getUserBookedPlaces = async (req, res) => {
+  mongoose.connect(process.env.MONGODB_URI);
   const { id } = await getUserDataFromReq(req);
   res.json(await BookingModel.find({ user: id }).populate("place"));
 };

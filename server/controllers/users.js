@@ -1,12 +1,13 @@
 import { UserModel } from "../models/users.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { json } from "express";
+import mongoose from "mongoose";
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salt);
+  mongoose.connect(process.env.MONGODB_URI);
 
   try {
     const existingUser = await UserModel.findOne({ email });
@@ -22,12 +23,13 @@ export const signup = async (req, res) => {
       res.status(400).json("emaila alredy used");
     }
   } catch (error) {
-    console.log(error);
+    res.json(error);
   }
 };
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
+  mongoose.connect(process.env.MONGODB_URI);
 
   try {
     const existingUser = await UserModel.findOne({ email });
@@ -52,12 +54,14 @@ export const signin = async (req, res) => {
       res.status(404).json("not found");
     }
   } catch (error) {
-    console.log(error);
+    res.json(error);
   }
 };
 
 export const profile = async (req, res) => {
   const { token } = req.cookies;
+  mongoose.connect(process.env.MONGODB_URI);
+
   if (token) {
     const jwtSecret = "fasefraw4r5r3wq45wdfgw34twdfg";
     jwt.verify(token, jwtSecret, {}, async (err, user) => {
