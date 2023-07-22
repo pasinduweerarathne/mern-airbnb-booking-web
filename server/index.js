@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
-    origin: ["https://mern-airbnb-booking-web.vercel.app"],
+    origin: ["http://localhost:5000"],
     credentials: true,
   })
 );
